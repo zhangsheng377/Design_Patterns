@@ -7,3 +7,9 @@ https://github.com/zhangsheng377/Design_Patterns/blob/master/main.cpp
 
 享元库:
 https://github.com/zhangsheng377/Design_Patterns/tree/master/Flyweight
+
+
+## 算法类
+
+bitmap:
+https://github.com/zhangsheng377/Design_Patterns/blob/master/Utils/bitmap.hpp
