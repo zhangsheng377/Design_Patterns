@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include "flyweight.hpp"
 
@@ -31,6 +32,7 @@ private:
 inline auto test_flyweight::test(const int test_num, const int flyweight_num) -> void
 {
 	std::vector<test_flyweight*> test_flyweights;
+	auto test_id = -1;
 
 	//add by obj
 	for (auto i = 0; i < test_num; ++i) {
@@ -51,11 +53,17 @@ inline auto test_flyweight::test(const int test_num, const int flyweight_num) ->
 			continue;
 		}
 	}
+
+	//another data type
+	test_id = flyweight_factory<int>::get_id_by_obj(&test_id);
+	if (test_id != 0) {
+		std::cout << "get by another type is not start from 0!" << std::endl;
+	}
+
 	//release by id/obj
 	for (auto i = 0; i < test_num; ++i) {
 		delete test_flyweights[i];
 	}
-
 	test_flyweights.clear();
 }
 
