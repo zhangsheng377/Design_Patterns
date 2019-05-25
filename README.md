@@ -11,5 +11,5 @@ https://github.com/zhangsheng377/Design_Patterns/tree/master/Flyweight
 
 ## 算法类
 
-bitmap:
-https://github.com/zhangsheng377/Design_Patterns/blob/master/Utils/bitmap.hpp
+assign:
+https://github.com/zhangsheng377/Design_Patterns/blob/master/Utils/assign.hpp
