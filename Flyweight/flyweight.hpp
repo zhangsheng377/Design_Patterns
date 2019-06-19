@@ -2,7 +2,7 @@
 //#include <iostream>
 #include <map>
 #include <set>
-#include "Utils/assign.hpp"
+#include "../Utils/assign.hpp"
 
 template <typename T>
 class flyweight_factory {
@@ -12,7 +12,7 @@ public:
 	static auto dereference_obj_by_id(const int id) -> void;
 	static void dereference_obj_by_obj(T* obj);
 
-	//TODO:¿¼ÂÇÔö¼Ólog¼ÆÊı
+	//TODO:è€ƒè™‘å¢åŠ logè®¡æ•°
 
 private:
 	flyweight_factory();
@@ -34,7 +34,7 @@ private:
 		int count_;
 		T obj_;
 
-		//TODO:¿¼ÂÇÌí¼Ó´¥·¢Æ÷
+		//TODO:è€ƒè™‘æ·»åŠ è§¦å‘å™¨
 	};
 	class flyweight_cmp {
 	public:
@@ -43,11 +43,11 @@ private:
 
 	static std::map<int, flyweight*> map_id_flyweight_;
 
-	//Èç¹ûÖ±½ÓÒÔT*×÷Îªkey,ÔòĞèÒªappÊµÏÖT*ÀàĞÍµÄ±È½Ïº¯Êı,·ñÔòÊÇÖ±½Ó°´ÕÕÖ¸ÕëµØÖ·´óĞ¡±È½Ï,ËùÒÔ´Ë·½°¸²»ÊÇÌ«ºÃ
-	//ÈôÒÔTÊµÀı×÷Îªkey,ËäÈ»¿ÉÒÔ½øĞĞ²éÕÒ,µ«¶à±£´æÁËÒ»·İÊµÀı,²»·ûºÏÏíÔªµÄË¼Ïë
+	//å¦‚æœç›´æ¥ä»¥T*ä½œä¸ºkey,åˆ™éœ€è¦appå®ç°T*ç±»å‹çš„æ¯”è¾ƒå‡½æ•°,å¦åˆ™æ˜¯ç›´æ¥æŒ‰ç…§æŒ‡é’ˆåœ°å€å¤§å°æ¯”è¾ƒ,æ‰€ä»¥æ­¤æ–¹æ¡ˆä¸æ˜¯å¤ªå¥½
+	//è‹¥ä»¥Tå®ä¾‹ä½œä¸ºkey,è™½ç„¶å¯ä»¥è¿›è¡ŒæŸ¥æ‰¾,ä½†å¤šä¿å­˜äº†ä¸€ä»½å®ä¾‹,ä¸ç¬¦åˆäº«å…ƒçš„æ€æƒ³
 	static std::set<flyweight*, flyweight_cmp> set_obj_flyweight_;
 
-	//TODO:¿ÉÒÔÔÚÕâÀïÊ¹ÓÃ²ßÂÔÄ£Ê½
+	//TODO:å¯ä»¥åœ¨è¿™é‡Œä½¿ç”¨ç­–ç•¥æ¨¡å¼
 	static const size_t initial_id_size;
 	static utils::assign bitmap_;
 };
@@ -89,7 +89,7 @@ void flyweight_factory<T>::flyweight::decrease_count() {
 
 template<typename T>
 auto flyweight_factory<T>::get_id_by_obj(T* obj) -> int {
-	flyweight flyweight_tmp(obj); //TODO:»áÔö¼ÓÒ»´ÎÁÙÊ±¿½±´,¸Ğ¾õ²»Ì«ºÃ
+	flyweight flyweight_tmp(obj); //TODO:ä¼šå¢åŠ ä¸€æ¬¡ä¸´æ—¶æ‹·è´,æ„Ÿè§‰ä¸å¤ªå¥½
 	if (set_obj_flyweight_.find(&flyweight_tmp) == set_obj_flyweight_.end()) {
 		auto new_id = bitmap_.allocate();
 		auto* flyweight_new = new flyweight(new_id, obj);
@@ -106,7 +106,7 @@ auto flyweight_factory<T>::get_obj_by_id(const int id) -> T* {
 	auto it = map_id_flyweight_.find(id);
 	if (it == map_id_flyweight_.end()) { return nullptr; }
 	auto tmp = it->second;
-	//Æ¾idÈ¡objÊÇ²»Ó¦¸ÃÔö¼Ó¼ÆÊıµÄ,¼´ËùÓĞappÖ®¼ä²»Ó¦¸Ã¿½±´id,¶øÊÇÔÚÒ»¿ªÊ¼Æ¾ÁÙÊ±objÈ¥È¡id,Ö®ºó¿ÉÈÎÒâÓÃidÀ´È¡obj
+	//å‡­idå–objæ˜¯ä¸åº”è¯¥å¢åŠ è®¡æ•°çš„,å³æ‰€æœ‰appä¹‹é—´ä¸åº”è¯¥æ‹·è´id,è€Œæ˜¯åœ¨ä¸€å¼€å§‹å‡­ä¸´æ—¶objå»å–id,ä¹‹åå¯ä»»æ„ç”¨idæ¥å–obj
 	return tmp->get_obj();
 }
 
@@ -127,7 +127,7 @@ auto flyweight_factory<T>::dereference_obj_by_id(const int id) -> void {
 
 template <typename T>
 void flyweight_factory<T>::dereference_obj_by_obj(T* obj) {
-	flyweight flyweight_tmp(obj); //TODO:»áÔö¼ÓÒ»´ÎÁÙÊ±¿½±´,¸Ğ¾õ²»Ì«ºÃ
+	flyweight flyweight_tmp(obj); //TODO:ä¼šå¢åŠ ä¸€æ¬¡ä¸´æ—¶æ‹·è´,æ„Ÿè§‰ä¸å¤ªå¥½
 	auto it = set_obj_flyweight_.find(&flyweight_tmp);
 	if (it != set_obj_flyweight_.end()) {
 		flyweight* flyweight_decrease = *it;

@@ -1,7 +1,9 @@
 .vs/*
 Debug/*
+.vscode/*
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
 *.json
+*.exe

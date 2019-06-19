@@ -8,7 +8,7 @@ namespace utils {
 	public:
 		enum allocate_mode {
 			fifo,
-			//TODO:Ôö¼ÓËæ»ú·ÖÅäÄ£Ê½
+			//TODO:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 		};
 		enum expand_mode {
 			no_expand ,
@@ -26,7 +26,7 @@ namespace utils {
 		allocate_mode allocate_mode_;
 		expand_mode expand_mode_;
 
-		//TODO:¿¼ÂÇ³éÏóÎª²ßÂÔÄ£Ê½
+		//TODO:ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ä£Ê½
 		int allocate_fifo();
 		void allocate_resize(const size_t old_size);
 		void allocate_resize_fifo(const size_t old_size);
@@ -126,7 +126,7 @@ namespace utils {
 	}
 
 	inline void assign::allocate_init_fifo() {
-		for (auto i = 0; i < bitmap_.size(); ++i) {
+		for (size_t i = 0; i < bitmap_.size(); ++i) {
 			fifo_.push(i);
 		}
 	}
