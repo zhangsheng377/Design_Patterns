@@ -8,7 +8,7 @@ namespace utils {
 	public:
 		enum allocate_mode {
 			fifo,
-			//TODO:�����������ģʽ
+			//TODO:增加随机分配模式
 		};
 		enum expand_mode {
 			no_expand ,
@@ -26,7 +26,7 @@ namespace utils {
 		allocate_mode allocate_mode_;
 		expand_mode expand_mode_;
 
-		//TODO:���ǳ���Ϊ����ģʽ
+		//TODO:考虑抽象为策略模式
 		int allocate_fifo();
 		void allocate_resize(const size_t old_size);
 		void allocate_resize_fifo(const size_t old_size);
